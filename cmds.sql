@@ -1,0 +1,17 @@
+#insert into admissions(admission_date, discharge_date) values ("2024-10-05","2024-10-25"), ("2024-10-03","2024-10-20");
+#select * from admissions where admission_date >= "2024-10-01" and admission_date <= "2024-10-07";
+#alter table patients add age_categorie varchar(15);
+update patients set age_categorie = "Senior" where date_of_birth < "2000-12-02";
+update patients set age_categorie = "Adult" where date_of_birth between "1990-12-03" and "2012-12-03";
+update patients set age_categorie = "Enfant" where date_of_birth between "2012-12-03" and "2025-12-03";
+show tables;
+select count(*) from appointments;
+select count(doctor_id), departement_id from doctors group by departement_id;
+alter table patients add age int(3);
+update patients set age = "2025" - extract(year from date_of_birth);
+select avg(age) from patients;
+select max(appointment_date) from appointments;
+select count(room_id), admission_id from admissions group by admission_id;
+insert into patients(first_name, last_name, gender, email, date_of_birth, phone_number) values ("Mohamed", "Ait Lafkih", "Male","mohamed@gmail.com", "2007-09-19", "0616074360");
+select * from patients where email = "";
+select p.first_name, a.appointment_date, d.first_name from appointment as a inner join doctors as d on d.doctor_id = a.doctor_id inner join patients as p on a.patient_id = p.patient_id;
